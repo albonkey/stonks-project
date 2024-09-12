@@ -1,0 +1,45 @@
+"use server";
+
+import { createClient } from "@/utils/supabase/server";
+
+export const startStreaming = async () => {
+  const supabase = createClient();
+  const { data: { user }} = await supabase.auth.getUser();
+
+  if (!user) {
+    throw new Error("User not logged in");
+  }
+
+  await supabase.from('profiles').update({
+    is_streaming: true,
+  }).eq('id', user.id).single();
+
+  await notifyFollowersThatUserStartedStreaming(user.id);
+};
+
+async function notifyFollowersThatUserStartedStreaming(userId: string) {
+  const supabase = createClient();
+  const { data: followers } = await supabase
+    .from('follows')
+    .select(`
+      follower_id,
+      profiles:profiles!follower_id( username, is_online, email, notification_preferences )
+    `)
+    .eq('user_id', userId);
+  
+  if (!followers) {
+    console.log("No followers found");
+    return;
+  }
+  
+  followers.forEach(async (follower: any) => {
+    console.log("NOTIFYING FOLLOWER", follower.profiles.username);
+    const { is_online, notification_preferences } = follower.profiles;
+
+    if (is_online) {
+      console.log("SENDING PUSH")
+    } else if (notification_preferences === "on") {
+      console.log("SENDING EMAIL")
+    }
+  });
+}
