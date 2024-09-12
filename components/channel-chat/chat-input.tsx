@@ -7,11 +7,11 @@ export default function ChatInput({ channelId }: { channelId: string }) {
   const handleSendMessage = async (text: string) => {
     await sendMessage(channelId, text);
   };
-  
+
   return (
     <div className="p-4 border-gray-700 border">
-      <Input 
-        placeholder="Send a message" 
+      <Input
+        placeholder="Send a message"
         onKeyDown={(e) => {
           if (e.key === "Enter") {
             handleSendMessage(e.currentTarget.value);
@@ -20,5 +20,5 @@ export default function ChatInput({ channelId }: { channelId: string }) {
         }}
       />
     </div>
-  )
+  );
 }

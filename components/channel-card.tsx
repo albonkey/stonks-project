@@ -1,13 +1,13 @@
 import Channel from "@/types/channel";
 import Link from "next/link";
 
-
 export default function ChannelCard({ channel }: { channel: Channel }) {
   return (
-    <Link href={`/${channel.id}`}
-      className="basis-full max-w-72 p-4 rounded hover:opacity-75 duration-100"
+    <Link
+      href={`/${channel.id}`}
+      className="basis-full max-w-72 m-2 rounded hover:opacity-75 duration-100"
     >
-      <div className="relative bg-amber-400 shadow-lg rounded-lg overflow-hidden">
+      <div className="relative bg-gray-900 shadow-lg rounded-lg overflow-hidden">
         {channel.is_streaming && (
           <span className="absolute bg-green-500 text-white text-sm px-2 py-1 rounded-full mt-2 ml-2">
             Streaming
@@ -19,11 +19,10 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
           alt={channel.username}
         />
         <div className="p-6">
-          <h2 className="font-semibold text-lg text-gray-800">
-            {channel.username}
-          </h2>
+          <h2 className="text-lg font-bold no-wrap">Stream title goes here</h2>
+          <h2 className="text-zinc-300">{channel.username}</h2>
         </div>
       </div>
     </Link>
-  )
+  );
 }
