@@ -5,7 +5,10 @@ import { encodedRedirect } from "@/utils/utils";
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 
-export const signInWithGoogleActions = async (formData: FormData, next?: string) => {
+export const signInWithGoogleActions = async (
+  formData: FormData,
+  next?: string
+) => {
   const supabase = createClient();
   const origin = headers().get("origin");
 
@@ -13,7 +16,7 @@ export const signInWithGoogleActions = async (formData: FormData, next?: string)
     provider: "google",
     options: {
       redirectTo: `${origin}/auth/callback${next ? `?next=${next}` : ""}`,
-    }
+    },
   });
 
   if (error) {
@@ -22,7 +25,6 @@ export const signInWithGoogleActions = async (formData: FormData, next?: string)
   }
 
   if (data.url) {
-    return redirect(data.url)
+    return redirect(data.url);
   }
-
 };

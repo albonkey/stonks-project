@@ -18,7 +18,9 @@ export default async function ChannelPage({
   return (
     <div className="flex relative h-dvh max-h-dvh pt-20">
       <Stream serverChannel={channel} />
-      <ChannelChat channelId={params.channel} />
+      <div className="hidden lg:block">
+        <ChannelChat channelId={params.channel} />
+      </div>
     </div>
   );
 }

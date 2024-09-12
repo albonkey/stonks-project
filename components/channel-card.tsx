@@ -5,7 +5,7 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={`/${channel.id}`}
-      className="basis-full max-w-72 m-2 rounded hover:opacity-75 duration-100"
+      className="basis-full sm:max-w-72 m-2 rounded hover:opacity-75 duration-100"
     >
       <div className="relative bg-gray-900 shadow-lg rounded-lg overflow-hidden">
         {channel.is_streaming && (
@@ -14,7 +14,7 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
           </span>
         )}
         <img
-          className="w-full h-32 object-cover"
+          className="w-full h-48 sm:h-32 object-cover"
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIs2bPL9hPYs3dp8w6L-9IAGqDn8xX6MrYrw&s"
           alt={channel.username}
         />

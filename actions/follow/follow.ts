@@ -5,8 +5,6 @@ export const follow = async (channelId: string) => {
 
     const { data } = await supabase.auth.getUser();
 
-    console.log(data)
-    
     if (!data.user) {
       throw new Error("User not logged in");
     }

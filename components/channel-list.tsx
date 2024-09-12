@@ -10,7 +10,7 @@ export default async function ChannelList() {
   };
 
   return (
-    <div className="flex flex-wrap min-h-screen mt-3">
+    <div className="flex flex-col flex-wrap sm:flex-row min-h-screen mt-3">
       {channels.map((channel) => (
         <ChannelCard key={channel.id} channel={channel} />
       ))}

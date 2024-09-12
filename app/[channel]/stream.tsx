@@ -43,9 +43,9 @@ export default function Stream({ serverChannel }: { serverChannel: Channel }) {
       )
       .subscribe();
 
-      return () => {
-        supabase.removeChannel(subscription);
-      }
+    return () => {
+      supabase.removeChannel(subscription);
+    };
   }, [supabase]);
 
   return (
