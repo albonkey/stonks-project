@@ -5,7 +5,7 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
   return (
     <Link
       href={`/${channel.id}`}
-      className="basis-full sm:max-w-72 m-2 rounded hover:opacity-75 duration-100"
+      className="basis-full m-2 rounded hover:opacity-75 duration-100"
     >
       <div className="relative bg-gray-900 shadow-lg rounded-lg overflow-hidden">
         {channel.is_streaming && (
@@ -19,7 +19,9 @@ export default function ChannelCard({ channel }: { channel: Channel }) {
           alt={channel.username}
         />
         <div className="p-6">
-          <h2 className="text-lg font-bold no-wrap">Stream title goes here</h2>
+          <h2 className="text-lg font-bold line-clamp-1">
+            Stream title goes here
+          </h2>
           <h2 className="text-zinc-300">{channel.username}</h2>
         </div>
       </div>
