@@ -71,7 +71,6 @@ export default function FollowButton({ channelId }: { channelId: string }) {
       {showSignIn && (
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
           <div className="bg-background p-6 rounded shadow-lg max-w-sm w-full">
-            <h2 className="text-lg font-bold mb-4">Sign In</h2>
             <SignInForm onComplete={() => setShowSignIn(false)} />
             <button
               onClick={() => setShowSignIn(false)}
